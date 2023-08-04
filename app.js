@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb'); // Import ObjectId from 'mongodb'
+
 const shortid = require('shortid');
 
 const PORT = 4000;
@@ -57,6 +58,24 @@ app.post('/shorten', async (req, res) => {
   }
 });
 
+//for deleting the data
+app.post('/delete/:id', async (req, res) => {
+    const urlId = req.params.id;
+  
+    try {
+      const result = await db.collection('urls').deleteOne({ _id: new ObjectId(urlId) });
+      if (result.deletedCount === 1) {
+        console.log('URL deleted successfully');
+      } else {
+        console.log('URL not found');
+      }
+      res.redirect('/');
+    } catch (error) {
+      console.error('Error deleting URL:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
 app.get('/:shortCode', async (req, res) => {
   const shortCode = req.params.shortCode;
   const urlData = await db.collection('urls').findOne({ shortCode });
@@ -69,19 +88,19 @@ app.get('/:shortCode', async (req, res) => {
 });
 
 async function connectDB() {
-  const client = new MongoClient(MONGODB_URL, { useUnifiedTopology: true });
-
-  try {
-    await client.connect();
-    db = client.db(DB_NAME);
-    console.log('Connected to the database');
-  } catch (error) {
-    console.error('Error connecting to the database', error);
+    const client = new MongoClient(MONGODB_URL, { useUnifiedTopology: true });
+  
+    try {
+      await client.connect();
+      db = client.db(DB_NAME);
+      console.log('Connected to the database');
+    } catch (error) {
+      console.error('Error connecting to the database', error);
+    }
   }
-}
-
-connectDB();
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+  
+  connectDB();
+  
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });

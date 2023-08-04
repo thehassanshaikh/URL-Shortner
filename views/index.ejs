@@ -12,12 +12,14 @@
   </form>
 
   <h2>Recent URLs:</h2>
+  <h2>Recent URLs:</h2>
   <table>
     <thead>
       <tr>
         <th>Number</th>
         <th>Original URL</th>
         <th>Short URL</th>
+        <th>Action</th> <!-- New column for delete button -->
       </tr>
     </thead>
     <tbody>
@@ -26,9 +28,15 @@
           <td><%= i + 1 %></td>
           <td><a href="<%= urls[i].originalUrl %>"><%= urls[i].originalUrl %></a></td>
           <td><a href="<%= urls[i].shortCode %>"><%= urls[i].shortCode %></a></td>
+          <td>
+            <form action="/delete/<%= urls[i]._id %>" method="post">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
         </tr>
       <% } %>
     </tbody>
   </table>
+  
 </body>
 </html>
