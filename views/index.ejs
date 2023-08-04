@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>URL Shortener</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+  <h1>URL Shortener</h1>
+  <form action="/shorten" method="post">
+    <input type="text" name="url" placeholder="Enter URL">
+    <button type="submit">Shorten</button>
+  </form>
+
+  <h2>Recent URLs:</h2>
+  <ul>
+    <% for (const url of urls) { %>
+      <li><a href="<%= url.originalUrl %>"><%= url.shortCode %></a></li>
+    <% } %>
+  </ul>
+</body>
+</html>
