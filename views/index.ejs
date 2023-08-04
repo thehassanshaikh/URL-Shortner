@@ -12,10 +12,23 @@
   </form>
 
   <h2>Recent URLs:</h2>
-  <ul>
-    <% for (const url of urls) { %>
-      <li><a href="<%= url.originalUrl %>"><%= url.shortCode %></a></li>
-    <% } %>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Original URL</th>
+        <th>Short URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let i = 0; i < urls.length; i++) { %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><a href="<%= urls[i].originalUrl %>"><%= urls[i].originalUrl %></a></td>
+          <td><a href="<%= urls[i].shortCode %>"><%= urls[i].shortCode %></a></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
 </body>
 </html>
