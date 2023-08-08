@@ -23,3 +23,7 @@ body {
     cursor: pointer;
   }
   
+  section.hero-sec {
+    display: flex;
+    justify-content: center;
+}

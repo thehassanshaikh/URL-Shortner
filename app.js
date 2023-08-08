@@ -6,7 +6,7 @@ const shortid = require('shortid');
 
 const PORT = 4000;
 const MONGODB_URL = 'mongodb+srv://hassansh:Website123@cluster0.k72knya.mongodb.net/';
-const DB_NAME = 'User';
+const DB_NAME = 'testurls'; //Users
 
 let db;
 

@@ -3,14 +3,20 @@
 <head>
   <title>URL Shortener</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="stylesheet" href="test.css">
 </head>
 <body>
-  <h1>URL Shortener</h1>
-  <form action="/shorten" method="post">
-    <input type="text" name="url" placeholder="Enter URL">
-    <button type="submit">Shorten</button>
-  </form>
-
+  <section class="hero-sec">
+    <div class="heading-col">
+      <h1>No Bullshit Only Short Links</h1>
+    </div>
+    <div class="input-col">
+      <form action="/shorten" method="post">
+        <input type="text" name="url" placeholder="Enter URL">
+        <button type="submit">Shorten</button>
+      </form>
+    </div>
+  </section>
   <h2>Recent URLs:</h2>
   <table>
     <thead>
@@ -22,20 +28,27 @@
       </tr>
     </thead>
     <tbody>
-      <% for (let i = 0; i < urls.length; i++) { %>
+      <% for (let i=0; i < urls.length; i++) { %>
         <tr>
-          <td><%= i + 1 %></td>
-          <td><a href="<%= urls[i].originalUrl %>"><%= urls[i].originalUrl %></a></td>
-          <td><a href="<%= urls[i].shortCode %>"><%= urls[i].shortCode %></a></td>
+          <td>
+            <%= i + 1 %>
+          </td>
+          <td><a href="<%= urls[i].originalUrl %>">
+              <%= urls[i].originalUrl %>
+            </a></td>
+          <td><a href="<%= urls[i].shortCode %>">
+              <%= urls[i].shortCode %>
+            </a></td>
           <td>
             <form action="/delete/<%= urls[i]._id %>" method="post">
               <button type="submit">Delete</button>
             </form>
           </td>
         </tr>
-      <% } %>
+        <% } %>
     </tbody>
   </table>
-  
+
 </body>
+
 </html>
