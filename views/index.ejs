@@ -4,16 +4,18 @@
   <title>URL Shortener</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
   <link rel="stylesheet" href="test.css">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <section class="hero-sec">
     <div class="heading-col">
-      <h1>No Bullshit Only Short Links</h1>
+      <h1 class="heading-text">No Bullsh*t<br><span class="heading-text-pro">Only Short Links</span></h1>
     </div>
     <div class="input-col">
       <form action="/shorten" method="post">
-        <input type="text" name="url" placeholder="Enter URL">
-        <button type="submit">Shorten</button>
+        <input class="input-box" type="text" name="url" placeholder="Enter URL">
+        <button class="short-btn" type="submit"><span class="btn-text">Short Links</span><i class="fa-solid fa-greater-than fa-xl"></i></button>
       </form>
     </div>
   </section>

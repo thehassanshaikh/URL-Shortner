@@ -1,11 +1,22 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DotGothic16&display=swap');
+
+:root {
+  --text: rgb(244, 244, 244);
+  --background: rgb(22, 22, 22);
+  --primary: rgb(218, 237, 110);
+}
+
+body{
+  background-color: var(--background);
+  color:var(--text);
+  font-family: terminal;
+}  
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
   }
   
-  h1 {
-    margin-top: 50px;
-  }
   
   form {
     margin-top: 20px;
@@ -15,6 +26,7 @@ body {
     padding: 8px;
   }
   
+/*   
   button {
     padding: 8px 20px;
     background-color: #007bff;
@@ -22,8 +34,49 @@ body {
     border: none;
     cursor: pointer;
   }
-  
+   */
   section.hero-sec {
     display: flex;
-    justify-content: center;
+    flex-direction:column;
+    justify-content: space-evenly;
+    text-align: center;
+  }
+
+  h1.heading-text {
+    font-size: 65px;
+    margin: 10px;
+}
+
+.heading-text-pro {
+  color: var(--primary);
+}
+
+input.input-box {
+  width: 60%;
+  display: block;
+  padding: 18px;
+  margin: 5px auto;
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 30px;
+}
+
+button.short-btn {
+  border: none;
+  padding: 15px 25px;
+  font-weight: bold;
+  background-color: #525252;
+  color: var(--primary);
+  border-radius: 50px;
+  margin: 10px;
+}
+
+.btn-text{
+  font-family: 'DotGothic16', sans-serif;
+  margin-right: 15px;
+}
+
+button.short-btn:hover{
+  color: var(--primary);
+  background-color: gray;
 }
