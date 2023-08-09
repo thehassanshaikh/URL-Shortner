@@ -17,7 +17,8 @@ app.use(express.static('public'));
 app.get('/', async (req, res) => {
   try {
     const urls = await db.collection('urls').find({}).toArray();
-    res.render('index', { urls });
+    const baseUrl = req.protocol + '://' + req.get('host');
+    res.render('index', { urls, baseUrl });
   } catch (error) {
     res.status(500).send('Internal Server Error');
   }
