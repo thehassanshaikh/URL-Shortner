@@ -43,13 +43,15 @@
             <td><a href="<%= urls[i].originalUrl %>">
                 <%= urls[i].originalUrl %>
               </a></td>
-            <td><a href="<%= urls[i].shortCode %>">
-                <%= urls[i].shortCode %>
+              <td><a href="<%= baseUrl + '/' + urls[i].shortCode %>">
+                <%= baseUrl + '/' + urls[i].shortCode %>
               </a></td>
             <td>
               <form action="/delete/<%= urls[i]._id %>" method="post">
                 <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                <button type="button" class="copy-button" data-url="<%= urls[i].shortCode %>"><i class="fa-solid fa-copy"></i></button>
+                <button type="button" class="copy-button" data-url="<%= baseUrl + '/' + urls[i].shortCode %>">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
               </form>
             </td>
           </tr>
@@ -60,14 +62,14 @@
 
   <script>
     const copyButtons = document.querySelectorAll('.copy-button');
-  
+    
     copyButtons.forEach(button => {
       button.addEventListener('click', () => {
-        const shortUrl = button.getAttribute('data-url');
-        copyToClipboard(shortUrl);
+        const fullUrl = button.getAttribute('data-url'); // Get the full URL from data-url attribute
+        copyToClipboard(fullUrl);
       });
     });
-  
+    
     function copyToClipboard(text) {
       const textarea = document.createElement('textarea');
       textarea.value = text;
@@ -75,7 +77,7 @@
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
-      alert('Short URL copied to clipboard: ' + text);
+      alert('URL copied to clipboard: ' + text);
     }
   </script>
 </body>

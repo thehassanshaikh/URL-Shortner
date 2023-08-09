@@ -58,6 +58,12 @@ input.input-box {
   background-color: transparent;
   border: 2px solid var(--primary);
   border-radius: 30px;
+  color: #ffff;
+}
+
+input.input-box::placeholder {
+  color: #ffff
+  opacity: 1; /* Firefox */
 }
 
 button.short-btn {
@@ -122,4 +128,5 @@ table, th, td {
 
 .data-table td a{
   color: #ffff;
+  text-decoration: none;
 }
