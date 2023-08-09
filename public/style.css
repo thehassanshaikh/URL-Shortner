@@ -62,7 +62,7 @@ input.input-box {
 }
 
 input.input-box::placeholder {
-  color: #ffff
+  color: #ffff;
   opacity: 1; /* Firefox */
 }
 
