@@ -1,6 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DotGothic16&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DotGothic16&family=Montserrat:wght@400;500;600&display=swap');
 :root {
   --text: rgb(244, 244, 244);
   --background: rgb(22, 22, 22);
@@ -10,7 +9,7 @@
 body{
   background-color: var(--background);
   color:var(--text);
-  font-family: terminal;
+  font-family: 'Montserrat', sans-serif;
 }  
 
   h1 {
@@ -57,7 +56,7 @@ input.input-box {
   padding: 18px;
   margin: 5px auto;
   background-color: transparent;
-  border: 1px solid var(--primary);
+  border: 2px solid var(--primary);
   border-radius: 30px;
 }
 
@@ -72,11 +71,59 @@ button.short-btn {
 }
 
 .btn-text{
-  font-family: 'DotGothic16', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-right: 15px;
 }
 
 button.short-btn:hover{
   color: var(--primary);
   background-color: gray;
+  padding: 15px 35px;
+  transition: cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+section.data-section {
+  display: flex;
+  justify-content: center;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* .data-table tr:nth-child(even){
+  background-color: rgb(245, 0, 0);
+} */
+
+table, th, td {
+  border: 1px solid #ffff;
+  border-collapse: collapse;
+}
+
+.data-table tr:hover {background-color: #111111;}
+
+.data-table td {
+    text-align: center;
+    padding: 5px 10px;
+    color: #ffff;
+}
+
+.data-table th{
+  padding: 15px;
+  text-align: center;
+  background-color: #525252;
+  color: white;
+  
+}
+
+
+.data-table td {
+  text-align: center;
+  padding: 5px 15px;
+  color: #ffff;
+}
+
+.data-table td a{
+  color: #ffff;
 }
