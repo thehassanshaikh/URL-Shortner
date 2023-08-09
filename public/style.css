@@ -85,12 +85,9 @@ button.short-btn:hover{
 section.data-section {
   display: flex;
   justify-content: center;
+  padding-top: 5%;
 }
 
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
 
 /* .data-table tr:nth-child(even){
   background-color: rgb(245, 0, 0);
@@ -116,7 +113,6 @@ table, th, td {
   color: white;
   
 }
-
 
 .data-table td {
   text-align: center;
