@@ -78,6 +78,8 @@ button.short-btn {
   color: var(--primary);
   border-radius: 50px;
   margin: 10px;
+  transition: ease-in-out;
+  transition-duration: 0.3s;
 }
 
 .btn-text{
@@ -89,7 +91,6 @@ button.short-btn:hover{
   color: var(--primary);
   background-color: gray;
   padding: 15px 35px;
-  transition: cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
 section.data-section {
