@@ -49,6 +49,11 @@ app.post('/shorten', async (req, res) => {
   const originalUrl = req.body.url;
   const shortCode = shortid.generate();
 
+  if (!originalUrl.trim()) {
+    // Return an error response
+    return res.status(400).send('Please enter a valid URL');
+  }
+
   const urlData = {
     originalUrl,
     shortCode,

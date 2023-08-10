@@ -66,6 +66,10 @@ input.input-box::placeholder {
   opacity: 1; /* Firefox */
 }
 
+.error-message{
+  color: red;
+}
+
 button.short-btn {
   border: none;
   padding: 15px 25px;
@@ -129,4 +133,8 @@ table, th, td {
 .data-table td a{
   color: #ffff;
   text-decoration: none;
+}
+
+.data-table td:hover a {
+  color: #daed6e;
 }
