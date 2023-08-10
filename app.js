@@ -1,9 +1,7 @@
 const express = require('express');
 const app = express();
 const { MongoClient, ObjectId } = require('mongodb'); // Import ObjectId from 'mongodb'
-
-//environment variables
-require('dotenv').config();
+require('dotenv').config();//environment variables
 
 const shortid = require('shortid');
 
