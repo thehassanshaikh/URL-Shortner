@@ -17,6 +17,20 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+async function connectDB() {
+  const client = new MongoClient(MONGODB_URL, { useUnifiedTopology: true });
+
+  try {
+    await client.connect();
+    db = client.db(DB_NAME);
+    console.log('Connected to the database');
+  } catch (error) {
+    console.error('Error connecting to the database', error);
+  }
+}
+
+connectDB();
+
 app.get('/', async (req, res) => {
   try {
     const urls = await db.collection('urls').find({}).toArray();
@@ -46,23 +60,23 @@ app.post('/shorten', async (req, res) => {
   
 
 app.post('/shorten', async (req, res) => {
-  const originalUrl = req.body.url;
-  const shortCode = shortid.generate();
-
-  if (!originalUrl.trim()) {
-    // Return an error response
-    return res.status(400).send('Please enter a valid URL');
-  }
-
-  const urlData = {
-    originalUrl,
-    shortCode,
-  };
-
   try {
+    const originalUrl = req.body.url;
+    const shortCode = shortid.generate();
+
+    if (!originalUrl.trim()) {
+      return res.status(400).send('Please enter a valid URL');
+    }
+
+    const urlData = {
+      originalUrl,
+      shortCode,
+    };
+
     await db.collection('urls').insertOne(urlData);
     res.redirect('/');
   } catch (error) {
+    console.error('Error inserting URL:', error);
     res.status(500).send('Internal Server Error');
   }
 });
@@ -113,3 +127,10 @@ async function connectDB() {
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
+
+  process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+    // Optionally, you can terminate the process if desired
+    // process.exit(1);
+  });
+  
